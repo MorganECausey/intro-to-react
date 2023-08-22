@@ -1,13 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import axios from 'axios'
 import Character from './Character'
+import { useState } from 'react' 
 
 const urlPlanets = 'http://localhost:9009/api/planets'
 const urlPeople = 'http://localhost:9009/api/people'
 
 function App() {
   // ❗ Create state to hold the data from the API
+  
   // ❗ Create effects to fetch the data and put it in state
+  const [character, setCharacter] = useState(null);
+  useEffect(() => {
+    Promise.all(urlPeople, urlPlanets)
+  })
+
   return (
     <div>
       <h2>Star Wars Characters</h2>
