@@ -11,8 +11,11 @@ function App() {
   
   // ❗ Create effects to fetch the data and put it in state
   const [character, setCharacter] = useState(null);
+  
   useEffect(() => {
-    Promise.all(urlPeople, urlPlanets)
+    const promise1 = urlPeople
+    const promise2 = urlPlanets
+    Promise.all(promise1, promise2)
   })
 
   return (

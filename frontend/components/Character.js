@@ -12,8 +12,8 @@ function Character(props) { // ❗ Add the props
 
   return (
     <div>
-      <h3>{Character.name}</h3>
-      <p>Planet: {Character.planet}</p>
+      <h3>{"character-name"}</h3>
+      <p>Planet: {"character-planet"}</p>
       {/* Use the same markup with the same attributes as in the mock */}
     </div>
   )
