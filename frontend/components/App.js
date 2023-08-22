@@ -10,23 +10,26 @@ function App() {
   // ❗ Create state to hold the data from the API
   
   // ❗ Create effects to fetch the data and put it in state
-  const [character, setCharacter] = useState(null);
-  
+  const [character, setCharacter] = useState([]);
+  const fetchData = async () => {
+    const response = await fetch(urlPeople, urlPlanets);
+    const character = await response.json();
+    setCharacter(character);
+  };
   useEffect(() => {
-    const promise1 = urlPeople
-    const promise2 = urlPlanets
-    Promise.all(promise1, promise2)
-  })
-
+    fetchData();
+  }, []);
   return (
     <div>
       <h2>Star Wars Characters</h2>
       <p>See the README of the project for instructions on completing this challenge</p>
-      {/* ❗ Map over the data in state, rendering a Character at each iteration */}
+      {character.map(item => {
+        <div key={character.id}>{character.name}</div>
+      })}
     </div>
   )
 }
-
+/* ❗ Map over the data in state, rendering a Character at each iteration */
 export default App
 
 // ❗ DO NOT CHANGE THE CODE  BELOW
