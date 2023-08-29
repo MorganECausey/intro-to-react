@@ -33,7 +33,7 @@ function App() {
       <h2>Star Wars Characters</h2>
       <p>See the README of the project for instructions on completing this challenge</p>
       <ul> 
-        {urlPeople.map(character => (
+      {urlPeople.map(character => (
           <li key={character.id} className="character-card">{character.name}</li>
         ))}
         </ul>
