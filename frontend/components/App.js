@@ -34,7 +34,7 @@ function App() {
       <p>See the README of the project for instructions on completing this challenge</p>
       <ul> 
         {urlPeople.map(character => (
-          <li key={character.id}>{character.name}</li>
+          <li key={character.id} className="character-card">{character.name}</li>
         ))}
         </ul>
     </div>
