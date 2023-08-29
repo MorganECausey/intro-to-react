@@ -12,6 +12,7 @@ function App() {
   // ❗ Create effects to fetch the data and put it in state
   const [urlPeople, setUrlPeople] = useState([]);
   const [urlPlanets, setUrlPlanets] = useState([]);
+  const [selectedCharacter, setSelectedCharacter] = useState(null);
 
   useEffect(() => {
     fetch('http://localhost:9009/api/people')
@@ -27,14 +28,27 @@ function App() {
       .catch(error => console.error('Error fetching data', error));
   }, []);
 
+  const handleCharacterClick = character => {
+    setSelectedCharacter(pervSelected => (pervSelected === character ? null : character))
+  }
 
+  const getPlanetByID = planetId => {
+    const planet = urlPlanets.find(planet => planet.id === planetId);
+    return planet ? planet.name : 'Unknown';
+  }
   return (
     <div>
       <h2>Star Wars Characters</h2>
       <p>See the README of the project for instructions on completing this challenge</p>
       <ul> 
-      {urlPeople.map(character => (
-          <li key={character.id} className="character-card">{character.name}</li>
+      {urlPeople.map(person => (
+          <Character
+          key={person.id}
+          name={person.name}
+          homeworld={getPlanetByID(person.homeworld)}
+          isSelected={selectedCharacter === person.id}
+          onClick={() => handleCharacterClick(person.id)}
+          />
         ))}
         </ul>
     </div>
