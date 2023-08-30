@@ -8,16 +8,22 @@ function Character(props) { // ❗ Add the props
   const handleHomeworldToggle = () => {
     setShowHomeworld(prevShow => !prevShow);
   };
+  
 
   return (
-      <div
+      <div 
       className={`character-card ${isSelected ? 'selected' : ''}`}
-      onClick={onClick}
+      onClick={() => {
+        onClick();
+        handleHomeworldToggle();
+      }}
       >
         <div>
-          <p className="character-name" onClick={handleHomeworldToggle}>{name}</p>
-        {isSelected && showHomeworld && (
-          <p className="character-planet">Planet: {homeworld}</p>
+          <p className="character-name">{name}</p>
+        {isSelected && (
+          <p className={`character-planet ${showHomeworld ? '' : 'hidden'}`}>
+          Planet: {homeworld}
+          </p>
         )}
         </div>
       </div>
