@@ -20,8 +20,8 @@ function Character(props) { // ❗ Add the props
       >
         <div>
           <p className="character-name">{name}</p>
-        {isSelected && (
-          <p className={`character-planet ${showHomeworld ? '' : 'hidden'}`}>
+        {showHomeworld && (
+          <p className={"character-planet"}>
           Planet: {homeworld}
           </p>
         )}
